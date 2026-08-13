@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Age Calculator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  h1 { font-size: 20px; margin-bottom: 18px; color: #1e1b4b; text-align: center; }
+  label { font-size: 13px; color: #444; display: block; margin-bottom: 4px; }
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  button {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover { background: #4338ca; }
+  #error { color: #dc2626; font-size: 13px; margin-top: 8px; text-align: center; min-height: 16px; }
+  #result {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    display: none;
+  }
+  #result .big { font-size: 28px; font-weight: 700; color: #1e1b4b; }
+  #result .sub { font-size: 13px; color: #666; margin-top: 4px; }
+  .grid { display: flex; justify-content: space-between; margin-top: 14px; gap: 8px; }
+  .grid div { flex: 1; background: #f4f4fb; border-radius: 8px; padding: 10px 4px; }
+  .grid .num { font-size: 16px; font-weight: 700; color: #4f46e5; }
+  .grid .lbl { font-size: 11px; color: #666; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Age Calculator</h1>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div id="error"></div>
+    <div id="result">
+      <div class="big" id="ageText"></div>
+      <div class="sub">Your exact age</div>
+      <div class="grid">
+        <div><div class="num" id="days">0</div><div class="lbl">Days</div></div>
+        <div><div class="num" id="weeks">0</div><div class="lbl">Weeks</div></div>
+        <div><div class="num" id="months">0</div><div class="lbl">Months</div></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+function calculateAge() {
+  const dobInput = document.getElementById('dob').value;
+  const errorEl = document.getElementById('error');
+  const resultEl = document.getElementById('result');
+  errorEl.textContent = '';
+  resultEl.style.display = 'none';
+
+  if (!dobInput) {
+    errorEl.textContent = 'Please select your date of birth.';
+    return;
+  }
+
+  const dob = new Date(dobInput);
+  const today = new Date();
+
+  if (dob > today) {
+    errorEl.textContent = 'Date of birth cannot be in the future.';
+    return;
+  }
+
+  let years = today.getFullYear() - dob.getFullYear();
+  let months = today.getMonth() - dob.getMonth();
+  let days = today.getDate() - dob.getDate();
+
+  if (days < 0) {
+    months--;
+    const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+    days += lastMonth.getDate();
+  }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  const diffTime = today - dob;
+  const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const totalWeeks = Math.floor(totalDays / 7);
+  const totalMonths = years * 12 + months;
+
+  document.getElementById('ageText').textContent =
+    `${years} years, ${months} months, ${days} days`;
+  document.getElementById('days').textContent = totalDays.toLocaleString();
+  document.getElementById('weeks').textContent = totalWeeks.toLocaleString();
+  document.getElementById('months').textContent = totalMonths.toLocaleString();
+
+  resultEl.style.display = 'block';
+}
+</script>
+</body>
+</html>
