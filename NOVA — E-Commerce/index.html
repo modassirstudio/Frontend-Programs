@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NOVA — thoughtful essentials for everyday living." />
+  <title>NOVA — Everyday, Elevated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="announcement">Free shipping on orders over ₹2,499 <span>✦</span> Easy 7-day returns</div>
+  <header class="site-header">
+    <a class="logo" href="#" aria-label="NOVA home">NOVA<span>.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#shop">Shop</a><a href="#story">Our story</a><a href="#newsletter">Journal</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn search-toggle" aria-label="Focus search" title="Search">⌕</button>
+      <button class="cart-trigger" id="openCart" aria-label="Open shopping bag">Bag <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE EVERYDAY EDIT — 2026</p>
+        <h1>Good things.<br><em>Better living.</em></h1>
+        <p class="hero-text">Considered essentials, made to bring a little more joy to the everyday.</p>
+        <a class="primary-btn" href="#shop">Explore the collection <span>↗</span></a>
+        <div class="hero-note"><span class="tiny-star">✳</span> Thoughtfully picked. Made to last.</div>
+      </div>
+      <div class="hero-art" aria-label="Lifestyle product composition">
+        <div class="sun-disc"></div>
+        <div class="hero-shape shape-one"></div><div class="hero-shape shape-two"></div>
+        <div class="hero-product">
+          <div class="bottle-cap"></div><div class="bottle-label">N<br>O<br>V<br>A</div>
+        </div>
+        <div class="hero-caption">OBJECTS FOR<br>BETTER DAYS</div>
+        <div class="hero-index">01 / 04</div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><span>✳</span> Curated with care</div><div><span>↗</span> Made for everyday</div><div><span>♡</span> Loved by 10k+ customers</div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">A FEW GOOD FINDS</p><h2>Shop the edit<span>.</span></h2></div>
+        <p>Useful things, beautiful details.<br>Find your new favourite.</p>
+      </div>
+      <div class="shop-toolbar">
+        <div class="filters" id="filters">
+          <button class="filter active" data-category="All">All pieces</button>
+          <button class="filter" data-category="Home">Home</button>
+          <button class="filter" data-category="Accessories">Accessories</button>
+          <button class="filter" data-category="Wellness">Wellness</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Find something..." /></label>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="story-section" id="story">
+      <div class="story-art"><div class="story-circle">LESS,<br>BUT<br><i>lovelier.</i></div><span class="story-stamp">NOVA / EST. 2024</span></div>
+      <div class="story-copy"><p class="eyebrow">A LITTLE ABOUT US</p><h2>Make room for<br><em>the good stuff.</em></h2><p>We believe the things you use every day should feel a little special. NOVA brings together thoughtful design, honest materials and small details that make a difference.</p><a href="#newsletter" class="text-link">Get to know us <span>↗</span></a></div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+      <p class="eyebrow">NOTES FROM NOVA</p><h2>A good thing in<br>your inbox<span>.</span></h2>
+      <p>New finds, thoughtful ideas and 10% off your first order.</p>
+      <form id="newsletterForm"><input type="email" id="emailInput" placeholder="Your email address" required /><button type="submit">Sign me up ↗</button></form>
+      <small id="newsletterMessage">No noise. Just the good stuff.</small>
+    </section>
+  </main>
+
+  <footer><a class="logo" href="#">NOVA<span>.</span></a><p>Everyday, elevated.</p><div>© 2026 NOVA Studio <span>Instagram&nbsp; ↗</span></div></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="cart-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your bag<span>.</span></h2></div><button class="close-cart" id="closeCart" aria-label="Close bag">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><div>♡</div><h3>Your bag is taking a break.</h3><p>Find something lovely to bring home.</p><button class="primary-btn" id="continueShopping">Explore pieces</button></div>
+    <div class="cart-footer" id="cartFooter"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><p>Shipping and taxes calculated at checkout.</p><button class="checkout-btn" id="checkoutBtn">Continue to checkout <span>↗</span></button><small>Demo storefront — checkout is not connected.</small></div>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
